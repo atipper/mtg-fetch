@@ -1,7 +1,7 @@
-function blackLotus() {
+export function blackLotus() {
     const mtg = require('mtgsdk');
 
     mtg.card.find(3).then(result =>{
-        return result.card.name
+        console.log(result.card.name)
     })
 }
