@@ -12,8 +12,14 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-0",
+    "forever-agent": "^0.6.1",
     "mtgsdk": "^0.4.3",
-    "nuxt": "^2.0.0"
+    "net": "^1.0.2",
+    "nuxt": "^2.0.0",
+    "request": "^2.88.0",
+    "tls": "0.0.1",
+    "tough-cookie": "^3.0.1",
+    "tunnel-agent": "^0.6.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0",
