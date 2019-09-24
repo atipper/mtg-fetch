@@ -2,11 +2,11 @@
     <div class="container">
         <h1>Search</h1>
         <p><nuxt-link to="/">Home</nuxt-link></p>
-        <input v-model="cardSearch" type="text" name="search" @keyup.enter="submitCard"/>
-        <button type="text" @click="test">Search</button>
+        <input v-model="cardSearch" type="text" name="search" @keyup.enter="saveCard(cardSearch)"/>
+        <button type="text" @click="saveCard(cardSearch)">Search</button>
         <br>
         <ul>
-            <li v-for="card in test" :key="card.name">{{ card.name }}</li>
+            <li v-for="card in cards" :key="card.id">{{ card.name }}</li>
         </ul>
     </div>
 </template>
@@ -17,31 +17,21 @@ export default {
     data: {
         state: 'default',
         cardSearch: '',
-        cards: [
-            {
-                name: 'Black Lotus',
-                rarity: 'Mythic'
-            }
-        ]
+        cards: []
     },
     methods: {
-        cardQuery: function() {
-            card.all({ name: cardSearch, pageSize: 1 })
+        saveCard: function(cardName) {
+            Magic.card.all({name: cardName, pageSize: 1})
             .on('data', card => {
-                return card.name
-            })
-        },
-        submitCard: function(cardSearch) {
-            this.card.push({
-                name: this.name,
-                rarity: this.rarity
-            })
-        },
-        test: function() {
-            // This functionally works, but speed is slow, need to quicken the results
-            Magic.card.all({name: 'Squee', pageSize: 1})
-            .on('data', card => {
-                console.log(card.name)
+                var name = card.name
+                var id = card.id
+                console.log(name)
+                console.log(id)
+                cards.push({
+                    name: this.name,
+                    id: this.id
+                })
+                this.cardSearch = ''
             })
         }
     }
