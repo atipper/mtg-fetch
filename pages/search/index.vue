@@ -9,7 +9,7 @@
             <tr v-for="card in cards" :key="card.id">
                 <td>{{ card.name }}</td>
                 <td>{{ card.setName }}</td>
-                <td><img :src="card.imageUrl" /></td>
+                <td><img id="cardImage" :src="card.imageUrl" /></td>
             </tr>
         </table>
     </div>
@@ -72,8 +72,37 @@ button:disabled {
     color: black;
 }
 
-table,tr,td {
-    border-color: rgb(255, 255, 255) !important;
-    padding: 3px;
+.cardResults {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.cardResults td {
+    font-size: 1em;
+}
+
+.cardResults td, .cardResults th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.cardResults tr:nth-child(even){background-color: #838383;}
+
+.cardResults tr:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.cardResults th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#cardImage {
+    height: 150px;
 }
 </style>
