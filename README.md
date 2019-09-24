@@ -22,5 +22,5 @@ $ npm run generate
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
 ### List of resources
-https://docs.magicthegathering.io/
-https://scryfall.com/docs/api
+* https://docs.magicthegathering.io/
+* https://scryfall.com/docs/api
