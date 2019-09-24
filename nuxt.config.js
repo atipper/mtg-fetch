@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -71,7 +71,13 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend (config) {
+      config.node = {
+        console: true,
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty',
+      }
     }
   }
 }
