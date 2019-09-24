@@ -14,22 +14,19 @@
 <script>
 import * as Magic from 'mtgsdk'
 export default {
-    data: {
-        state: 'default',
-        cardSearch: '',
-        cards: []
+    data() {
+        return {
+            cards: [],
+            cardSearch: null
+        }
     },
     methods: {
         saveCard: function(cardName) {
             Magic.card.all({name: cardName, pageSize: 1})
             .on('data', card => {
-                var name = card.name
-                var id = card.id
-                console.log(name)
-                console.log(id)
-                cards.push({
-                    name: this.name,
-                    id: this.id
+                this.cards.push({
+                    name: card.name,
+                    id: card.id
                 })
                 this.cardSearch = ''
             })
