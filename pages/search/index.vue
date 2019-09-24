@@ -9,7 +9,7 @@
             <tr v-for="card in cards" :key="card.id">
                 <td>{{ card.name }}</td>
                 <td>{{ card.setName }}</td>
-                <td>{{ card.imageURL }}</td>
+                <td><img :src="card.imageUrl" /></td>
             </tr>
         </table>
     </div>
@@ -33,7 +33,7 @@ export default {
                     name: card.name,
                     id: card.id,
                     setName: card.setName,
-                    imageURL: card.imageURL
+                    imageUrl: card.imageUrl
                 })
                 this.cardSearch = ''
             })
@@ -43,14 +43,28 @@ export default {
 </script>
 
 <style scoped>
-input {
-    background-color:lightslategray;
+input[type=text], select {
+  background-color: lightgrey;
+  color: rgb(0, 0, 0);
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 button {
-    background-color:darkgray;
-    border-radius: 25%;
-    padding: 2px;
+    background-color: rgb(109, 109, 109);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 1em;
 }
 
 button:disabled {
@@ -59,7 +73,7 @@ button:disabled {
 }
 
 table,tr,td {
-    border: rgb(255, 255, 255) !important;
+    border-color: rgb(255, 255, 255) !important;
     padding: 3px;
 }
 </style>
