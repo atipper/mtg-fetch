@@ -24,3 +24,4 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ### List of resources
 * https://docs.magicthegathering.io/
 * https://scryfall.com/docs/api
+* https://docs.tcgplayer.com/docs
