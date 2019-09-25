@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Sets</h1>
         <ul>
-            <li v-for="set in sets" :key="sets.id">{{ set.name }}</li>
+            <li :created="fetchSets" :mounted="fetchSets" :updated="fetchSets" v-for="set in sets" :key="set.id">{{ set.name }}</li>
         </ul>
     </div>
 </template>
@@ -17,12 +17,17 @@ export default {
     },
     methods: {
         fetchSets: function() {
-            Magic.set.all.then({
-                var sets = this.sets
-                for each (var set in sets) {
-                    return set
-                }
+            var setQuery = 'M13'
+            console.log(setQuery)
+            Magic.set.all({ name: setQuery })
+            .on('data', set => {
+                this.sets.push({
+                    name: set.name,
+                    block: set.block,
+                    id: set.id
+                })
             })
+            console.log(this.sets)
         }
     }
 }
