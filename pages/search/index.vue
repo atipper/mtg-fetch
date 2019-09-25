@@ -3,13 +3,20 @@
         <h1>Search</h1>
         <p>Enter a search query below using a text from a card name. A list will be populated based on the results.</p>
         <input v-model="cardSearch" type="text" name="search" @keyup.enter="saveCard(cardSearch)"/>
-        <button type="text" @click="saveCard(cardSearch)" v-bind:disabled="cardSearch.length === 0">Search</button>
+        <button name="search" type="text" @click="saveCard(cardSearch)" v-bind:disabled="cardSearch.length === 0">Search</button>
         <br>
         <table v-if="cards.length >= 1" class="cardResults">
+            <tr class="tableHeader">
+                <td>Card Name</td>
+                <td>Set Name</td>
+                <td>Image</td>
+                <td>Price</td>
+            </tr>
             <tr v-for="card in cards" :key="card.id">
                 <td>{{ card.name }}</td>
                 <td>{{ card.setName }}</td>
-                <td><img id="cardImage" :src="card.imageUrl" /></td>
+                <td><a :href="card.imageUrl" target="_blank"><img id="cardImage" :src="card.imageUrl" /></a></td>
+                <td></td>
             </tr>
         </table>
     </div>
@@ -82,6 +89,10 @@ button:disabled {
     font-size: 1em;
 }
 
+.tableHeader {
+    font-weight: bold;
+}
+
 .cardResults td, .cardResults th {
   border: 1px solid #ddd;
   padding: 8px;
@@ -98,7 +109,8 @@ button:disabled {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  width: 100%;
+  background-color: rgb(131, 131, 131);
   color: white;
 }
 
