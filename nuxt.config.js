@@ -79,8 +79,5 @@ export default {
         tls: 'empty',
       }
     }
-  },
-  router: {
-    base: '/mtg-fetch/'
   }
 }
