@@ -11,7 +11,7 @@
         <div>
             <button @click="fetchScryfallImage">Generate</button>
             <p v-if="fallSet != null">
-            Set: {{ fallSet.name }}<br><img :src="fallSet.icon_svg_uri" height="50px"/><br>Card count: {{fallSet.card_count}}
+                Set: {{ fallSet.name }}<br><img :src="fallSet.icon_svg_uri" height="50px"/><br>Card count: {{fallSet.card_count}}
             </p>
         </div>
     </div>
@@ -43,18 +43,12 @@ export default {
                 this.sets.push({
                     name: sets.name,
                     block: sets.block,
-                    id: sets.id,
-                    releaseDate: sets.release_date
+                    id: sets.id
                 })
             })
         },
         fetchScryfallImage: function() {
-            axios
-            .get('https://api.scryfall.com/sets/aer')
-            .then(response => (this.info = response))
-
             this.fallSet = this.info.data
-            console.log(this.fallSet)
         }
     }
 }
