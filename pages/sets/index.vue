@@ -11,7 +11,7 @@
         <div>
             <button @click="log">Log Me</button>
             <ul v-if="sets != null">
-                <li v-for="set in sets" :key="set.id">
+                <li v-for="set in sets" :key="set.name">
                     {{ set.name }}
                 </li>
             </ul>
@@ -26,7 +26,8 @@ export default {
     data() {
         return {
             sets: [],
-            info: null
+            info: null,
+            scrySet: null
         }
     },
     mounted() {
@@ -37,21 +38,18 @@ export default {
     },
     methods: {
         fetchSets: function() {
-            axios.get('https://api.scryfall.com/sets').then(
-                response => (this.info = response)
-            )
+            axios
+            .get('https://api.scryfall.com/sets')
+            .then(response => (this.info = response))
         },
         assignSets: function() {
-            async function assign() {
-                var setArr = this.info.data
-                console.log(setArr)
-                this.sets.push({
-                    name: this.setArr.name,
-                    id: this.setArr.id
-                })
-            }
+            this.scrySet = this.info.data
+            this.sets.push({
+                name: scrySet.data.name
+            })
         },
         log: function() {
+            console.log(this.info.data)
             console.log(this.sets)
         }
     }
