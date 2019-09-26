@@ -9,10 +9,12 @@
             </tr>
         </table>-->
         <div>
-            <button @click="fetchScryfallImage">Generate</button>
-            <p v-if="fallSet != null">
-                Set: {{ fallSet.name }}<br><img :src="fallSet.icon_svg_uri" height="50px"/><br>Card count: {{fallSet.card_count}}
-            </p>
+            <button @click="log">Log Me</button>
+            <ul v-if="sets != null">
+                <li v-for="set in sets" :key="set.id">
+                    {{ set.name }}
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -24,36 +26,43 @@ export default {
     data() {
         return {
             sets: [],
-            info: null,
-            fallSet: null
+            info: null
         }
     },
     mounted() {
-        axios
-        .get('https://api.scryfall.com/sets/aer')
-        .then(response => (this.info = response))
+        this.assignSets()
     },
-    created: function() {
+    created() {
         this.fetchSets()
     },
     methods: {
         fetchSets: function() {
-            Magic.set.all({block: '', border: 'black'})
-            .on('data', sets => {
-                this.sets.push({
-                    name: sets.name,
-                    block: sets.block,
-                    id: sets.id
-                })
-            })
+            axios.get('https://api.scryfall.com/sets').then(
+                response => (this.info = response)
+            )
         },
-        fetchScryfallImage: function() {
-            this.fallSet = this.info.data
+        assignSets: function() {
+            async function assign() {
+                var setArr = this.info.data
+                console.log(setArr)
+                this.sets.push({
+                    name: this.setArr.name,
+                    id: this.setArr.id
+                })
+            }
+        },
+        log: function() {
+            console.log(this.sets)
         }
     }
 }
 </script>
 
 <style scoped>
-
+img {
+    background-color: #fff;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 1em;
+}
 </style>
