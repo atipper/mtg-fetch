@@ -1,37 +1,28 @@
 <template>
     <div class="container">
         <h1>Sets</h1>
-        <!--<table>
+        <table>
             <tr v-for="set in sets" :key="set.id">
                 <td>{{ set.name }}</td>
                 <td>{{ set.block }}</td>
-                <td>{{ set.releaseDate }}</td>
+                <td>{{ set.set_type }}</td>
             </tr>
-        </table>-->
-        <div>
-            <button @click="log">Log Me</button>
-            <ul v-if="sets != null">
-                <li v-for="set in sets" :key="set.name">
-                    {{ set.name }}
-                </li>
-            </ul>
-        </div>
+        </table>
     </div>
 </template>
 
 <script>
-import * as Magic from 'mtgsdk'
 import axios from 'axios'
 export default {
     data() {
         return {
             sets: [],
             info: null,
-            scrySet: null
+            filtered: null
         }
     },
     mounted() {
-        this.assignSets()
+        
     },
     created() {
         this.fetchSets()
@@ -40,17 +31,21 @@ export default {
         fetchSets: function() {
             axios
             .get('https://api.scryfall.com/sets')
-            .then(response => (this.info = response))
-        },
-        assignSets: function() {
-            this.scrySet = this.info.data
-            this.sets.push({
-                name: scrySet.data.name
+            .then(response => {
+                this.info = response
+                this.assignSets()
             })
         },
+        assignSets: function() {
+            this.sets = this.info.data.data
+        },
         log: function() {
-            console.log(this.info.data)
-            console.log(this.sets)
+            console.log(this.scrySet[0])
+        }
+    },
+    computed: {
+        filteredSets() {
+            
         }
     }
 }
