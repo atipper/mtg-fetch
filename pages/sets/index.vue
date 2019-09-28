@@ -13,7 +13,7 @@
 
 <script>
 import axios from 'axios'
-import database from '../../components/firebaseInit'
+import db from '~/plugins/firebase.js'
 export default {
     data() {
         return {
