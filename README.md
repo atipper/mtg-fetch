@@ -3,6 +3,7 @@
 > Magic: The Gathering Card Database
 
 ## Firebase Setup
+Create a .env file in the project root and fill in these variables from the Firebase console.
 ``` bash
 # Firebase keys when creating a firebase project
 FIREBASE_API_KEY=
