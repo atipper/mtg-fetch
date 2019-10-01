@@ -26,6 +26,9 @@ $ npm run dev
 
 # build
 $ npm run build
+
+# Import card data into Firebase
+$ npm run import
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

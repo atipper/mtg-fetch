@@ -89,3 +89,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Temp ignore large files in source
+import/sources
