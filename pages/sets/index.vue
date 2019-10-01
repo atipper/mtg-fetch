@@ -48,19 +48,23 @@ export default {
 
         },
         storeSets: function() {
-            this.db.collection('mtgSets').add({
-                name: this.sets.name,
-                block: this.sets.block,
-                set_type: this.sets.set_type,
-                id: this.sets.id,
-                slug: this.generateUUID()
+            db.collection("mtgSets").add({
+                    id: this.sets.id,
+                    tcgplayer_id: this.sets.tcgplayer_id,
+                    name: this.set.name,
+                    block: this.sets.block,
+                    set_type: this.sets.set_type,
+                    card_count: this.sets.card_count,
+                    icon_svg_uri: this.sets.icon_svg_uri,
+                    search_uri: this.sets.search_uri,
+                    //slug: this.generateUUID(),
             })
             .then(function(docRef) {
-                console.log('Document written with ID: ', docRef.id)
+                console.log("Document written with ID: ", docRef.id);
             })
             .catch(function(error) {
-                console.error('Error adding document: ', error)
-            })
+                console.error("Error adding document: ", error);
+            });
         },
         generateUUID() {
             let d = new Date().getTime()
