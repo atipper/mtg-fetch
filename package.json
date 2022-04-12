@@ -1,28 +1,45 @@
 {
   "name": "mtg-fetch",
   "version": "1.0.0",
-  "description": "Magic: The Gathering Card Database",
-  "author": "Andrew Tipper",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "import": "npm ./import/index.js"
+    "lint:prettier": "prettier --check .",
+    "lint": "npm run lint:prettier",
+    "lintfix": "prettier --write --list-different .",
+    "test:e2e": "wdio wdio.conf.js"
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/pwa": "^3.0.0-0",
-    "axios": "^0.19.0",
-    "firebase": "^7.0.0",
-    "mtgsdk": "^0.4.3",
-    "nuxt": "^2.0.0"
+    "@nuxtjs/pwa": "^3.3.5",
+    "axios": "^0.26.1",
+    "core-js": "^3.19.3",
+    "dotenv": "^16.0.0",
+    "firebase": "^9.6.10",
+    "fs": "^0.0.1-security",
+    "mtgsdk": "^1.0.0",
+    "net": "^1.0.2",
+    "nuxt": "^2.13.3",
+    "tls": "^0.0.1",
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "vuetify": "^2.6.1",
+    "webpack": "^4.44.2"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.8.6",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "@nuxtjs/vuetify": "^1.12.3",
+    "@wdio/cli": "^7.16.11",
+    "@wdio/local-runner": "^7.16.11",
+    "@wdio/mocha-framework": "^7.16.11",
+    "@wdio/spec-reporter": "^7.16.11",
+    "@wdio/sync": "^7.16.11",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-wdio": "^7.4.2",
+    "prettier": "^2.5.1",
+    "webdriverio": "^7.16.11"
   }
 }
