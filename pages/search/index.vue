@@ -10,13 +10,11 @@
                 <td>Card Name</td>
                 <td>Set Name</td>
                 <td>Image</td>
-                <td>Price</td>
             </tr>
             <tr v-for="card in cards" :key="card.id">
                 <td>{{ card.name }}</td>
                 <td>{{ card.setName }}</td>
                 <td><a :href="card.imageUrl" target="_blank"><img id="cardImage" :src="card.imageUrl" /></a></td>
-                <td></td>
             </tr>
         </table>
     </div>
@@ -24,6 +22,7 @@
 
 <script>
 import * as Magic from 'mtgsdk'
+import db from '~/plugins/firebase'
 export default {
     data() {
         return {
@@ -34,6 +33,7 @@ export default {
     methods: {
         saveCard: function(cardName) {
             this.cards = []
+            //Magic.card.all({name: cardName, pageSize: 1})
             Magic.card.all({name: cardName, pageSize: 1})
             .on('data', card => {
                 this.cards.push({

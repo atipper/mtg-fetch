@@ -1,7 +1,12 @@
 <template>
     <div class="container">
         <h1>Sets</h1>
-        <table>
+        <table class="setResults">
+            <tr class="tableHeader">
+                <td>Set Name</td>
+                <td>Set Block</td>
+                <td>Set Type</td>
+            </tr>
             <tr v-for="set in sets" :key="set.id">
                 <td>{{ set.name }}</td>
                 <td>{{ set.block }}</td>
@@ -80,10 +85,42 @@ export default {
 </script>
 
 <style scoped>
-img {
-    background-color: #fff;
-    padding: 2px;
-    margin: 2px;
-    border-radius: 1em;
+.setResults {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.setResults td {
+    font-size: 1em;
+}
+
+.tableHeader {
+    font-weight: bold;
+}
+
+.setResults td, .setResults th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.setResults tr:nth-child(even){background-color: #838383;}
+
+.setResults tr:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.setResults th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  width: 100%;
+  background-color: rgb(131, 131, 131);
+  color: white;
+}
+
+#setImage {
+    height: 150px;
 }
 </style>
