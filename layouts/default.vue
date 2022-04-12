@@ -83,7 +83,7 @@
       :fixed="fixed"
       app
     >
-      <span>&copy; Andrew Tipper 2019</span>
+      <span>&copy; Andrew Tipper 2022</span>
     </v-footer>
   </v-app>
 </template>
